@@ -1,3 +1,4 @@
+#include "clienteFuncoes.h"
 #include <iostream>
 
 using namespace std;
@@ -35,7 +36,7 @@ void menuCliente (){
 		
 		switch(iopcao) {
 			case 0:
-				cout << "voltar aqui";
+				run = 0;
 				break;
 			case 1:
 				adicionarCliente();
@@ -51,12 +52,8 @@ void menuCliente (){
 				break;	
 			default: 
 				cout << "Opcao inexistente";
+				break;
 		}
 	}
-}
-
-int main() {
-	menuCliente();
-	return 0;
 }
 
