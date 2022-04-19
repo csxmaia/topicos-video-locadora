@@ -19,8 +19,6 @@ int main()
 		cin >> opcao;
 		
 		int iopcao = opcao - '0';
-		cout << "aaaaaaaaaa"; 
-		cout << opcao;
 		switch(iopcao) {
 			case 0:
 				run = 0;
