@@ -1,5 +1,6 @@
 #include "clienteFuncoes.h"
 #include <iostream>
+#include <list>
 
 using namespace std;
 
@@ -20,10 +21,12 @@ void visualizarClientes(){
 	cout << "visualizarClientes\n\n";
 }
 
-void menuCliente (){
+void menuCliente(list<int>& listCliente){
 	int run = 1;
 	char opcao = 'x';
 	while(run){	
+		listCliente.push_back( 10 );
+	  	listCliente.push_back( 11 );
 		cout << "Menu de Clientes" << endl;
 		cout << "0 - Voltar" << endl;
 		cout << "1 - Adicionar um novo cliente" << endl;
