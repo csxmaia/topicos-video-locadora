@@ -1,4 +1,5 @@
 #include "clienteFuncoes.h"
+#include "cliente.h"
 #include <iostream>
 #include <list>
 
