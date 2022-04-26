@@ -2,19 +2,38 @@
 #include "cliente.h"
 #include <iostream>
 #include <list>
+#include <iterator>
 
 using namespace std;
 
+int setId(list<Cliente>& listCliente)
+{
+  if(listCliente.size() != 0) {
+	  list<Cliente>::iterator it;
+	  int novoId = 1;
+	  for(it = listCliente.begin(); it != listCliente.end(); it++)
+	  {
+	    if(it->id >= novoId)
+		{
+			novoId = it->id;
+		}
+	  }
+	  return novoId+1;
+  }
+  return 1;
+}
 
-void adicionarCliente(list<Cliente>& listCliente){
+void adicionarCliente(list<Cliente>& listClientes){
 	cout << "adicionarCliente\n\n";
+	
 	Cliente cliente;
+	cliente.id = setId(listClientes);
 	cout << "Nome do Cliente: ";
 	cin >> cliente.nomeCliente;
 	cout << "Idade do Cliente: ";
 	cin >> cliente.idade;
 	
-	listCliente.push_back(cliente);
+	listClientes.push_back(cliente);
 }
 
 void alterarCliente(){
@@ -25,16 +44,20 @@ void excluirCliente(){
 	cout << "excluirCliente\n\n";
 }
 
-void visualizarClientes(){
-	cout << "visualizarClientes\n\n";
+void listarClientes(list<Cliente>& listClientes){
+	list<Cliente>::iterator it;
+	for(it = listClientes.begin(); it != listClientes.end(); it++)
+	    cout << "id: " << it->id << "\n"
+	    << "nome: " << it->nomeCliente << "\n"
+	    << "idade: "<< it->idade
+	    << endl;
+
 }
 
-void menuCliente(list<int>& listCliente){
+void menuCliente(list<Cliente>& listClientes){
 	int run = 1;
 	char opcao = 'x';
-	while(run){	
-		listCliente.push_back( 10 );
-	  	listCliente.push_back( 11 );
+	while(run){	    
 		cout << "Menu de Clientes" << endl;
 		cout << "0 - Voltar" << endl;
 		cout << "1 - Adicionar um novo cliente" << endl;
@@ -50,7 +73,7 @@ void menuCliente(list<int>& listCliente){
 				run = 0;
 				break;
 			case 1:
-				adicionarCliente();
+				adicionarCliente(listClientes);
 				break;
 			case 2:
 				alterarCliente();
@@ -59,7 +82,7 @@ void menuCliente(list<int>& listCliente){
 				excluirCliente();
 				break;
 			case 4:
-				visualizarClientes();
+				listarClientes(listClientes);
 				break;	
 			default: 
 				cout << "Opcao inexistente";

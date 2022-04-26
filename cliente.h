@@ -8,12 +8,8 @@
 	typedef struct Cliente 
 	{
 		int id;
-		std::string nomecliente;
+		std::string nomeCliente;
 		int idade;
 	}	Cliente;
-
-
-	void MenuCliente(char *opcao);
-
 
 #endif

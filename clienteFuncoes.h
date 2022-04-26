@@ -1,7 +1,8 @@
 #include <list>
-#ifndef CLIENTE_FUNCOES
-#define CLIENTE_FUNCOES
+#include "cliente.h"
+#ifndef cliente_funcoes_h
+#define cliente_funcoes_h
 
-void menuCliente(list<int>& listCliente);
+void menuCliente(std::list<Cliente>& listClientes); 
 
 #endif

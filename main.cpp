@@ -1,10 +1,11 @@
 #include "clienteFuncoes.h"
+#include "cliente.h"
 #include <iostream>
 #include <list>
 
 using namespace std;
 
-list<int> listClientes;
+list<Cliente> listClientes;
 list<int> listAcervo;
 list<int> listLocacao;
 
@@ -29,7 +30,6 @@ int main()
 				run = 0;
 			case 1:
 				menuCliente(listClientes);
-				cout << "printar";
 				break;
 			case 2:
 				cout << "Acervo";
