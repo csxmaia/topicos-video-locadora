@@ -10,9 +10,9 @@ void adicionarCliente(list<Cliente>& listCliente){
 	cout << "adicionarCliente\n\n";
 	Cliente cliente;
 	cout << "Nome do Cliente: ";
-	cin >> cli.nomeCliente;
+	cin >> cliente.nomeCliente;
 	cout << "Idade do Cliente: ";
-	cin >> cli.idade;
+	cin >> cliente.idade;
 	
 	listCliente.push_back(cliente);
 }
