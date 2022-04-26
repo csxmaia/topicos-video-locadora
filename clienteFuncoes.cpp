@@ -5,8 +5,15 @@
 using namespace std;
 
 
-void adicionarCliente(){
+void adicionarCliente(list<Cliente>& listCliente){
 	cout << "adicionarCliente\n\n";
+	Cliente cliente;
+	cout << "Nome do Cliente: ";
+	cin >> cli.nomeCliente;
+	cout << "Idade do Cliente: ";
+	cin >> cli.idade;
+	
+	listCliente.push_back(cliente);
 }
 
 void alterarCliente(){
