@@ -40,8 +40,22 @@ void alterarCliente(){
 	cout << "alterarCliente\n\n";
 }
 
-void excluirCliente(){
+void excluirCliente(list<Cliente>& listClientes){
 	cout << "excluirCliente\n\n";
+	
+	int id;
+	list<Cliente>:: iterator it;
+	
+	cout << "Informe o ID do cliente que voce deseja excluir: ";
+	cin >> id;
+	for (it = listClientes.begin(); it != listClientes.end(); it ++){
+		if(it -> id == id){
+			listClientes.erase(it);
+			break;
+		}
+		
+	}
+	
 }
 
 void listarClientes(list<Cliente>& listClientes){
@@ -79,7 +93,7 @@ void menuCliente(list<Cliente>& listClientes){
 				alterarCliente();
 				break;
 			case 3:
-				excluirCliente();
+				excluirCliente(listClientes);
 				break;
 			case 4:
 				listarClientes(listClientes);
