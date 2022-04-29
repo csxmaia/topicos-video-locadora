@@ -36,8 +36,47 @@ void adicionarCliente(list<Cliente>& listClientes){
 	listClientes.push_back(cliente);
 }
 
-void alterarCliente(){
+void alterarCliente(list<Cliente>& listClientes){
 	cout << "alterarCliente\n\n";
+	
+	int id;
+	char opcao;
+	bool run = 1;
+	list<Cliente>::iterator it;
+	
+	cout << "Informe o ID do cliente que deseja alterar: ";
+	cin >> id;
+	cout << endl;
+	
+	for(it = listClientes.begin(); it != listClientes.end(); it++){
+		if(it -> id == id){
+			cout << "O cliente que voce está alterando é: ";
+			cout << it->nomeCliente;
+			
+			
+			while(run){
+				cout<<"\n\nMenu de alterações de clientes" << endl;
+				cout<<"0 - Finalizar alteração"<< endl;
+				cout<<"1 - Alterar nome do Cliente"<< endl;
+				cout<<"2 - Alterar idade do Cliente"<< endl;
+				cin >> opcao;
+				
+				if(opcao == '1'){
+					cout << "Informe o novo NOME: ";
+					cin >> it -> nomeCliente;
+				}else if (opcao == '2'){
+					cout << "Informe a nova IDADE: ";
+					cin >> it -> idade;
+
+				}else if (opcao == '0'){
+					run = 0;
+				}
+			}
+			
+			break;
+		}
+	}
+	
 }
 
 void excluirCliente(){
@@ -76,7 +115,7 @@ void menuCliente(list<Cliente>& listClientes){
 				adicionarCliente(listClientes);
 				break;
 			case 2:
-				alterarCliente();
+				alterarCliente(listClientes);
 				break;
 			case 3:
 				excluirCliente();
