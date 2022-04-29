@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 
-
 	typedef struct acervo 
 	{
 		int id;
@@ -12,6 +11,6 @@
 		std::string genero;
 		double valor;
 		bool locado;
-	}	Acervo;
+	} Acervo;
 
 #endif

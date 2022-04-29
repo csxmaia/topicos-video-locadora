@@ -33,7 +33,7 @@ void adicionarItem(list<Acervo>& listAcervos){
 	cout << "Genero: ";
 	cin >> acervo.genero;
 	cout << "Valor: ";
-	cin >> acervo.genero;
+	cin >> acervo.valor;
 	acervo.locado = 0;
 	
 	listAcervos.push_back(acervo);
@@ -43,19 +43,34 @@ void alterarItem(){
 	cout << "alterarItem\n\n";
 }
 
-void excluirItem(){
-	cout << "excluirCliente\n\n";
+void excluirItem(list<Acervo>& listAcervos){
+	int id;
+	cout << "Informe o id do item que deseja remover" << endl;
+	cin >> id;
+	
+	list<Acervo>::iterator it;
+	for(it = listAcervos.begin(); it != listAcervos.end(); it++)
+	{
+		if(it->id == id) {
+			listAcervos.erase(it);
+			break;
+		}
+	}
+	
+	cout << "Item removido com sucesso!";
 }
 
 void listarItens(list<Acervo>& listAcervos){
 	list<Acervo>::iterator it;
 	for(it = listAcervos.begin(); it != listAcervos.end(); it++)
-	    cout << "id: " << it->id << "\n"
+	{
+		cout << "id: " << it->id << "\n"
 	    << "titulo: " << it->titulo << "\n"
 	    << "genero: "<< it->genero << "\n"
 	    << "valor: R$"<< it->valor << "\n"
 	    << "locado: "<< it->locado << "\n"
 	    << endl;
+	}
 
 }
 
@@ -84,7 +99,7 @@ void menuAcervo(list<Acervo>& listAcervos){
 				alterarItem();
 				break;
 			case 3:
-				excluirItem();
+				excluirItem(listAcervos);
 				break;
 			case 4:
 				listarItens(listAcervos);
