@@ -39,8 +39,47 @@ void adicionarItem(list<Acervo>& listAcervos){
 	listAcervos.push_back(acervo);
 }
 
-void alterarItem(){
-	cout << "alterarItem\n\n";
+void alterarItem(list<Acervo>& listAcervos){
+	int id;
+	char opcao;
+	bool run = 1;
+	list<Acervo>::iterator it;
+	
+	cout << "Informe o ID do item que deseja alterar: ";
+	cin >> id;
+	cout << endl;
+	
+	for(it = listAcervos.begin(); it != listAcervos.end(); it++){
+		if(it -> id == id){
+			cout << "O item que voce está alterando é: ";
+			cout << it->nomeCliente;
+			
+			
+			while(run){
+				cout<<"\n\nMenu de alterações de itens" << endl;
+				cout<<"0 - Finalizar alteração e voltar"<< endl;
+				cout<<"1 - Alterar titulo do Acervo"<< endl;
+				cout<<"2 - Alterar genero do Acervo"<< endl;
+				cout<<"3 - Alterar valor do Acervo"<< endl;
+				cin >> opcao;
+				
+				if(opcao == '1'){
+					cout << "Informe o novo TITULO: ";
+					cin >> it -> titulo;
+				}else if (opcao == '2'){
+					cout << "Informe a nova GENERO: ";
+					cin >> it -> genero;
+				}else if (opcao == '3'){
+					cout << "Informe a nova VALOR: ";
+					cin >> it -> valor;
+				}else if (opcao == '0'){
+					run = 0;
+				}
+			}
+			
+			break;
+		}
+	}
 }
 
 void excluirItem(list<Acervo>& listAcervos){

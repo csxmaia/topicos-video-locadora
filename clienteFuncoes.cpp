@@ -37,8 +37,6 @@ void adicionarCliente(list<Cliente>& listClientes){
 }
 
 void alterarCliente(list<Cliente>& listClientes){
-	cout << "alterarCliente\n\n";
-	
 	int id;
 	char opcao;
 	bool run = 1;
@@ -56,7 +54,7 @@ void alterarCliente(list<Cliente>& listClientes){
 			
 			while(run){
 				cout<<"\n\nMenu de alterações de clientes" << endl;
-				cout<<"0 - Finalizar alteração"<< endl;
+				cout<<"0 - Finalizar alteração e voltar"<< endl;
 				cout<<"1 - Alterar nome do Cliente"<< endl;
 				cout<<"2 - Alterar idade do Cliente"<< endl;
 				cin >> opcao;
@@ -81,21 +79,6 @@ void alterarCliente(list<Cliente>& listClientes){
 
 void excluirCliente(){
 	cout << "excluirCliente\n\n";
-	
-	int id;
-	cout << "Informe o id do cliente que deseja remover" << endl;
-	cin >> id;
-	
-	list<Cliente>::iterator it;
-	for(it = listClientes.begin(); it != listClientes.end(); it++)
-	{
-		if(it->id == id) {
-			listClientes.erase(it);
-			break;
-		}
-	}
-	
-	cout << "Cliente removido com sucesso!";
 }
 
 void listarClientes(list<Cliente>& listClientes){
@@ -133,7 +116,7 @@ void menuCliente(list<Cliente>& listClientes){
 				alterarCliente(listClientes);
 				break;
 			case 3:
-				excluirCliente(listClientes);
+				excluirCliente();
 				break;
 			case 4:
 				listarClientes(listClientes);
