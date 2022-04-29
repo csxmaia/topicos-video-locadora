@@ -1,12 +1,14 @@
 #include "clienteFuncoes.h"
 #include "cliente.h"
+#include "acervoFuncoes.h"
+#include "acervo.h"
 #include <iostream>
 #include <list>
 
 using namespace std;
 
 list<Cliente> listClientes;
-list<int> listAcervo;
+list<Acervo> listAcervo;
 list<int> listLocacao;
 
 int main()
@@ -32,6 +34,7 @@ int main()
 				menuCliente(listClientes);
 				break;
 			case 2:
+				menuAcervo(listAcervo);
 				cout << "Acervo";
 				break;
 			case 3:
