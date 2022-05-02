@@ -51,13 +51,13 @@ void alterarItem(list<Acervo>& listAcervos){
 	
 	for(it = listAcervos.begin(); it != listAcervos.end(); it++){
 		if(it -> id == id){
-			cout << "O item que voce está alterando é: ";
-			cout << it->nomeCliente;
+			cout << "O item que voce estï¿½ alterando ï¿½: ";
+			cout << it-> titulo;
 			
 			
 			while(run){
-				cout<<"\n\nMenu de alterações de itens" << endl;
-				cout<<"0 - Finalizar alteração e voltar"<< endl;
+				cout<<"\n\nMenu de alteraï¿½ï¿½es de itens" << endl;
+				cout<<"0 - Finalizar alteraï¿½ï¿½o e voltar"<< endl;
 				cout<<"1 - Alterar titulo do Acervo"<< endl;
 				cout<<"2 - Alterar genero do Acervo"<< endl;
 				cout<<"3 - Alterar valor do Acervo"<< endl;
@@ -135,7 +135,7 @@ void menuAcervo(list<Acervo>& listAcervos){
 				adicionarItem(listAcervos);
 				break;
 			case 2:
-				alterarItem();
+				alterarItem(listAcervos);
 				break;
 			case 3:
 				excluirItem(listAcervos);
