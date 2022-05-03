@@ -42,6 +42,17 @@ void adicionarLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, 
 	cin >> clienteId;
 	
 	locacao.cliente = buscarClientePorId(clienteId, listClientes);
+	
+	//while - pede cliente, enquantro nao eoncntra, pede o cliente
+	//altera variavel de controle do whileai para o whiel
+	
+	if (locacao.cliente == 0x0) {
+		cout << "Cliente nao encontrado";
+		
+	} else {
+		
+	}
+	
 	cout << "Usuario " + locacao.cliente->nomeCliente + " selecionado.\n";
 
 	cout << "ID do Acervo: ";
@@ -69,7 +80,7 @@ void excluirLocacao(){
 void visualizarItensNaoLocados(list<Acervo>& listAcervos)
 {
 	list<Acervo>::iterator it;
-	cout << "Itens não locados: \n";
+	cout << "Itens nao locados: \n";
 	for (it = listAcervos.begin(); it != listAcervos.end(); it++)
 	{
 		if(!it->locado)
@@ -83,10 +94,9 @@ void visualizarItensLocados(list<Locacao>& listLocacoes)
 {
 	list<Locacao>::iterator it;
 	for (it = listLocacoes.begin(); it != listLocacoes.end(); it++)
-		Locacao *locacao = &(*it);
 		cout << "ID: " << it->id << "\n" 
 		<< "Valor locação: " << it->valor
-		<< "Cliente: " << it->cliente->idade
+		<< "Cliente: " << it->cliente->nomeCliente
 		<< endl;
 //		cout << "ID do Cliente: " << it->clienteId << "\n";
 //		Cliente cliente = buscarClientePorId(listaClientes, it->clienteId);
@@ -98,7 +108,7 @@ void menuLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<
 	int run = 1;
 	char opcao = 'x';
 	while(run){	    
-		cout << "Menu de Locacoes" << endl;
+		cout << "Menu de LOCACOES" << endl;
 		cout << "0 - Voltar" << endl;
 		cout << "1 - Adicionar uma nova locacao" << endl;
 		cout << "2 - Alterar dados de uma locacao" << endl;
@@ -135,4 +145,3 @@ void menuLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<
 		}
 	}
 }
-
