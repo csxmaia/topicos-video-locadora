@@ -28,12 +28,18 @@ void adicionarItem(list<Acervo>& listAcervos){
 	
 	Acervo acervo;
 	acervo.id = setId(listAcervos);
+
 	cout << "Titulo: ";
-	cin >> acervo.titulo;
+	cin.ignore();
+	getline(cin, acervo.titulo);
+
 	cout << "Genero: ";
-	cin >> acervo.genero;
+	cin.ignore();
+	getline(cin, acervo.titulo);
+
 	cout << "Valor: ";
 	cin >> acervo.valor;
+
 	acervo.locado = 0;
 	
 	listAcervos.push_back(acervo);
@@ -63,16 +69,20 @@ void alterarItem(list<Acervo>& listAcervos){
 				cout<<"3 - Alterar valor do Acervo"<< endl;
 				cin >> opcao;
 				
-				if(opcao == '1'){
+				if (opcao == '1') {
 					cout << "Informe o novo TITULO: ";
-					cin >> it -> titulo;
-				}else if (opcao == '2'){
-					cout << "Informe a nova GENERO: ";
-					cin >> it -> genero;
-				}else if (opcao == '3'){
-					cout << "Informe a nova VALOR: ";
+					cin.ignore();
+					getline(cin, it->titulo);
+
+				} else if (opcao == '2') {
+					cout << "Informe o novo GENERO: ";
+					cin.ignore();
+					getline(cin, it->genero);
+
+				} else if (opcao == '3') {
+					cout << "Informe o novo VALOR: ";
 					cin >> it -> valor;
-				}else if (opcao == '0'){
+				} else if (opcao == '0') {
 					run = 0;
 				}
 			}
