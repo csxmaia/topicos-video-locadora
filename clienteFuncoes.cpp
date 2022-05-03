@@ -105,6 +105,22 @@ void listarClientes(list<Cliente>& listClientes){
 
 }
 
+Cliente* buscarClientePorId(int& id, list<Cliente>& listClientes)
+{
+	Cliente *cliente;
+	list<Cliente>::iterator it;
+	for(it = listClientes.begin(); it != listClientes.end(); it++)
+	{
+		if(it -> id == id)
+		{
+			cliente = &(*it);
+			break;
+		}
+		
+	}
+	return cliente;
+}
+
 void menuCliente(list<Cliente>& listClientes){
 	int run = 1;
 	char opcao = 'x';

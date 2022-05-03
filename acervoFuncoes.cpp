@@ -113,6 +113,22 @@ void listarItens(list<Acervo>& listAcervos){
 
 }
 
+Acervo* buscarItemPorId(int& id, list<Acervo>& listAcervos)
+{
+	Acervo *item;
+	list<Acervo>::iterator it;
+	for(it = listAcervos.begin(); it != listAcervos.end(); it++)
+	{
+		if(it -> id == id)
+		{
+			item = &(*it);
+			break;
+		}
+		
+	}
+	return item;
+}
+
 void menuAcervo(list<Acervo>& listAcervos){
 	int run = 1;
 	char opcao = 'x';
