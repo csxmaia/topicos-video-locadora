@@ -29,7 +29,9 @@ void adicionarCliente(list<Cliente>& listClientes){
 	Cliente cliente;
 	cliente.id = setId(listClientes);
 	cout << "Nome do Cliente: ";
-	cin >> cliente.nomeCliente;
+	cin.ignore();
+	getline(cin, cliente.nomeCliente);
+
 	cout << "Idade do Cliente: ";
 	cin >> cliente.idade;
 	
@@ -48,20 +50,21 @@ void alterarCliente(list<Cliente>& listClientes){
 	
 	for(it = listClientes.begin(); it != listClientes.end(); it++){
 		if(it -> id == id){
-			cout << "O cliente que voce est� alterando �: ";
+			cout << "O cliente que voce est? alterando ?: ";
 			cout << it->nomeCliente;
 			
 			
 			while(run){
-				cout<<"\n\nMenu de altera��es de clientes" << endl;
-				cout<<"0 - Finalizar altera��o e voltar"<< endl;
+				cout<<"\n\nMenu de altera??es de clientes" << endl;
+				cout<<"0 - Finalizar altera??o e voltar"<< endl;
 				cout<<"1 - Alterar nome do Cliente"<< endl;
 				cout<<"2 - Alterar idade do Cliente"<< endl;
 				cin >> opcao;
 				
 				if(opcao == '1'){
 					cout << "Informe o novo NOME: ";
-					cin >> it -> nomeCliente;
+					cin.ignore();
+					getline(cin, it -> nomeCliente);
 				}else if (opcao == '2'){
 					cout << "Informe a nova IDADE: ";
 					cin >> it -> idade;
@@ -107,7 +110,8 @@ void listarClientes(list<Cliente>& listClientes){
 
 Cliente* buscarClientePorId(int& id, list<Cliente>& listClientes)
 {
-	Cliente *cliente;
+	Cliente *cliente = 0x0;
+	
 	list<Cliente>::iterator it;
 	for(it = listClientes.begin(); it != listClientes.end(); it++)
 	{
@@ -157,4 +161,5 @@ void menuCliente(list<Cliente>& listClientes){
 		}
 	}
 }
+
 
