@@ -12,7 +12,7 @@
 	{
 		int id;
 		Cliente *cliente;
-		std::list<Acervo*> itens;
+		Acervo *item;
 		double valor;
 	} Locacao;
 
