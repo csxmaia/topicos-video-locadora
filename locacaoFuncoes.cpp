@@ -94,14 +94,15 @@ void visualizarItensLocados(list<Locacao>& listLocacoes)
 {
 	list<Locacao>::iterator it;
 	for (it = listLocacoes.begin(); it != listLocacoes.end(); it++)
-		cout << "ID: " << it->id << "\n" 
-		<< "Valor locação: " << it->valor
-		<< "Cliente: " << it->cliente->nomeCliente
-		<< endl;
-//		cout << "ID do Cliente: " << it->clienteId << "\n";
-//		Cliente cliente = buscarClientePorId(listaClientes, it->clienteId);
-//		cout << "Nome do Cliente: " << it->cliente.nomeCliente << "\n"
-//	    cout << "ID do Acervo: "<< it->acervoId << "\n";
+		cout << "ID: " << it->id << endl;
+		cout << "Valor locacao: " << it->valor << endl;
+		cout << "Cliente: " << it->cliente->nomeCliente << endl;
+}
+
+void realizarDevolucao(list<Locacao>& listLocacoes)
+{
+	// cout << "ID da Locação: ";
+	// cin >> locacaoId;
 }
 
 void menuLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<Acervo>& listAcervos){
@@ -114,8 +115,8 @@ void menuLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<
 		cout << "2 - Alterar dados de uma locacao" << endl;
 		cout << "3 - Remover uma locacao" << endl;
 		cout << "4 - Visualizar locacoes" << endl;
-		cout << "5 - Visualizar itens não locados" << endl;
-		cout << "6 - Realizar devolução" << endl;
+		cout << "5 - Visualizar itens nao locados" << endl;
+		cout << "6 - Realizar devoluçao" << endl;
 		cin >> opcao;
 		
 		int iopcao = opcao - '0';
@@ -139,6 +140,9 @@ void menuLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<
 			case 5:
 				visualizarItensNaoLocados(listAcervos);
 				break;	
+			case 6:
+				realizarDevolucao(listLocacoes);
+				break;
 			default: 
 				cout << "Opcao inexistente";
 				break;
