@@ -115,6 +115,8 @@ void realizarDevolucao(list<Locacao>& listLocacoes)
 			break;
 		}
 	}
+
+	cout << "Faturamento: "<< faturamento;
 	
 }
 
