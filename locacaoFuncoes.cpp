@@ -10,6 +10,8 @@
 
 using namespace std;
 
+double faturamento = 0;
+
 int setId(list<Locacao>& listLocacoes)
 {
   if(listLocacoes.size() != 0) {
@@ -59,9 +61,9 @@ void adicionarLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, 
 		cout << "Item " + item->titulo + " selecionado.\n";
 	
 		item->locado = 1;
-		locacao.valor += item->valor;
-		locacao.itens.push_back(item);
-		
+		locacao.valor = item->valor;
+		locacao.item = item;
+	
 		listLocacoes.push_back(locacao);
 	}
 }
@@ -98,8 +100,22 @@ void visualizarItensLocados(list<Locacao>& listLocacoes)
 
 void realizarDevolucao(list<Locacao>& listLocacoes)
 {
-	// cout << "ID da Locação: ";
-	// cin >> locacaoId;
+	cout << "ID da Locação: ";
+	cin >> locacaoId;
+
+	list<Locacao>::iterator it;
+	for(it = listLocacoes.begin(); it != listLocacoes.end(); it++)
+	{
+		if(it->id == locacaoId) {
+			faturamento += it->item->valor;
+			it->item->locado = 0;
+			listLocacoes.erase(it);
+			break;
+		}
+	}
+	
+	
+
 }
 
 void mostrarFaturamento(){
