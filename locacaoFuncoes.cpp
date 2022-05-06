@@ -93,9 +93,9 @@ void visualizarItensLocados(list<Locacao>& listLocacoes)
 {
 	list<Locacao>::iterator it;
 	for (it = listLocacoes.begin(); it != listLocacoes.end(); it++)
-		cout << "ID: " << it->id << endl;
-		cout << "Valor locacao: " << it->valor << endl;
-		cout << "Cliente: " << it->cliente->nomeCliente << endl;
+		cout << "ID: " << it->id
+		<< "\nValor locacao: " << it->valor
+		<< "\nCliente: " << it->cliente->nomeCliente << endl;
 }
 
 void realizarDevolucao(list<Locacao>& listLocacoes)
@@ -115,6 +115,8 @@ void realizarDevolucao(list<Locacao>& listLocacoes)
 			break;
 		}
 	}
+
+	cout << "Faturamento: "<< faturamento;
 	
 }
 
