@@ -30,7 +30,7 @@ int setId(list<Locacao>& listLocacoes)
 }
 
 void adicionarLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<Acervo>& listAcervos){
-	cout << "Adicionar item no acervo\n\n";
+	cout << "Adicionar nova LOCACAO\n\n";
 	// Realizar operação de cadastrar locar mais de um item
 	// Validar se o item já não está como locado
 
@@ -49,26 +49,23 @@ void adicionarLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, 
 	//altera variavel de controle do whileai para o whiel
 	
 	if (locacao.cliente == 0x0) {
-		cout << "Cliente nao encontrado";
-		
+		cout << "Cliente nao encontrado";	
 	} else {
-		
-	}
-	
-	cout << "Usuario " + locacao.cliente->nomeCliente + " selecionado.\n";
+		cout << "Usuario " + locacao.cliente->nomeCliente + " selecionado.\n";
 
-	cout << "ID do Acervo: ";
-	cin >> acervoId;
+		cout << "ID do Acervo: ";
+		cin >> acervoId;
 	
-	Acervo *item;
-	item = buscarItemPorId(acervoId, listAcervos);
-	cout << "Item " + item->titulo + " selecionado.\n";
+		Acervo *item;
+		item = buscarItemPorId(acervoId, listAcervos);
+		cout << "Item " + item->titulo + " selecionado.\n";
 	
-	item->locado = 1;
-	locacao.valor = item->valor;
-	locacao.item = item;
+		item->locado = 1;
+		locacao.valor = item->valor;
+		locacao.item = item;
 	
-	listLocacoes.push_back(locacao);
+		listLocacoes.push_back(locacao);
+	}
 }
 
 void alterarLocacao(){
@@ -121,6 +118,10 @@ void realizarDevolucao(list<Locacao>& listLocacoes)
 	
 }
 
+void mostrarFaturamento(){
+	
+}
+
 void menuLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<Acervo>& listAcervos){
 	int run = 1;
 	char opcao = 'x';
@@ -128,11 +129,10 @@ void menuLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<
 		cout << "Menu de LOCACOES" << endl;
 		cout << "0 - Voltar" << endl;
 		cout << "1 - Adicionar uma nova locacao" << endl;
-		cout << "2 - Alterar dados de uma locacao" << endl;
-		cout << "3 - Remover uma locacao" << endl;
-		cout << "4 - Visualizar locacoes" << endl;
-		cout << "5 - Visualizar itens nao locados" << endl;
-		cout << "6 - Realizar devoluçao" << endl;
+		cout << "2 - Visualizar locacoes" << endl;
+		cout << "3 - Visualizar itens nao locados (disponiveis)" << endl;
+		cout << "4 - Realizar devolucao" << endl;
+		cout << "5 - Mostrar faturamento" << endl;
 		cin >> opcao;
 		
 		int iopcao = opcao - '0';
@@ -145,20 +145,17 @@ void menuLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<
 				adicionarLocacao(listLocacoes, listClientes, listAcervos);
 				break;
 			case 2:
-				alterarLocacao();
+			    visualizarItensLocados(listLocacoes);
 				break;
 			case 3:
-				excluirLocacao();
+				visualizarItensNaoLocados(listAcervos);
 				break;
 			case 4:
-				visualizarItensLocados(listLocacoes);
+				realizarDevolucao(listLocacoes);
 				break;	
 			case 5:
-				visualizarItensNaoLocados(listAcervos);
+				mostrarFaturamento();
 				break;	
-			case 6:
-				realizarDevolucao(listLocacoes);
-				break;
 			default: 
 				cout << "Opcao inexistente";
 				break;
