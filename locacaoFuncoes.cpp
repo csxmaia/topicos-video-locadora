@@ -103,6 +103,8 @@ void visualizarItensLocados(list<Locacao>& listLocacoes)
 
 void realizarDevolucao(list<Locacao>& listLocacoes)
 {
+	int locacaoId;
+
 	cout << "ID da Locação: ";
 	cin >> locacaoId;
 
@@ -117,8 +119,6 @@ void realizarDevolucao(list<Locacao>& listLocacoes)
 		}
 	}
 	
-	
-
 }
 
 void menuLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<Acervo>& listAcervos){
