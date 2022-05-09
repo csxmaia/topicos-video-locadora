@@ -34,7 +34,6 @@ void adicionarItem(list<Acervo>& listAcervos){
 	getline(cin, acervo.titulo);
 
 	cout << "Genero: ";
-	cin.ignore();
 	getline(cin, acervo.genero);
 
 	cout << "Valor: ";
