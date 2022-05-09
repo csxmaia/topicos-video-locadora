@@ -142,7 +142,7 @@ void menuAcervo(list<Acervo>& listAcervos){
 	int run = 1;
 	char opcao = 'x';
 	while(run){	    
-		cout << "Menu de Acervo" << endl;
+		cout << "\n\nMenu de Acervo" << endl;
 		cout << "0 - Voltar" << endl;
 		cout << "1 - Adicionar um novo item" << endl;
 		cout << "2 - Alterar dados de um item" << endl;

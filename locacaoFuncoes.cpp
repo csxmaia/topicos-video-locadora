@@ -48,23 +48,23 @@ void adicionarLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, 
 	//while - pede cliente, enquantro nao eoncntra, pede o cliente
 	//altera variavel de controle do whileai para o whiel
 	
-	if (locacao.cliente == 0x0) {
-		cout << "Cliente nao encontrado";	
-	} else {
-		cout << "Usuario " + locacao.cliente->nomeCliente + " selecionado.\n";
+	if (!locacao.cliente == 0x0) {
+	    cout << "Usuario " + locacao.cliente->nomeCliente + " selecionado.\n";
 
-		cout << "ID do Acervo: ";
-		cin >> acervoId;
-	
-		Acervo *item;
-		item = buscarItemPorId(acervoId, listAcervos);
-		cout << "Item " + item->titulo + " selecionado.\n";
-	
-		item->locado = 1;
-		locacao.valor = item->valor;
-		locacao.item = item;
-	
-		listLocacoes.push_back(locacao);
+        cout << "ID do Acervo: ";
+        cin >> acervoId;
+
+        Acervo *item;
+        item = buscarItemPorId(acervoId, listAcervos);
+        cout << "Item " + item->titulo + " selecionado.\n";
+
+        item->locado = 1;
+        locacao.valor = item->valor;
+        locacao.item = item;
+
+        listLocacoes.push_back(locacao);
+	} else {
+		cout << "Cliente nao encontrado\n";
 	}
 }
 

@@ -4,6 +4,7 @@
 #include "acervo.h"
 #include "locacaoFuncoes.h"
 #include "locacao.h"
+#include "util.h"
 #include <iostream>
 #include <list>
 
@@ -33,6 +34,7 @@ int main()
 			case 0:
 				run = 0;
 			case 1:
+				limparTela();
 				menuCliente(listClientes);
 				break;
 			case 2:
