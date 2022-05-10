@@ -38,10 +38,12 @@ int main()
 				menuCliente(listClientes);
 				break;
 			case 2:
+				limparTela();
 				menuAcervo(listAcervos);
 				cout << "Acervo";
 				break;
 			case 3:
+				limparTela();
 				menuLocacao(listLocacoes, listClientes, listAcervos);
 				cout << "Locacao";
 				break;
