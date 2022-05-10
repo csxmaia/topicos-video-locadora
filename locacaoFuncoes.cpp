@@ -121,7 +121,7 @@ void realizarDevolucao(list<Locacao>& listLocacoes)
 }
 
 void mostrarFaturamento(){
-	
+	cout << "\n" << "Faturamento da locadora: R$" << faturamento << "\n";
 }
 
 void menuLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<Acervo>& listAcervos){
