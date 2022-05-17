@@ -1,5 +1,6 @@
 #include "acervoFuncoes.h"
 #include "acervo.h"
+#include "util.h"
 #include <iostream>
 #include <list>
 #include <iterator>
@@ -24,7 +25,13 @@ int setId(list<Acervo>& listAcervos)
 }
 
 void adicionarItem(list<Acervo>& listAcervos){
-	cout << "Adicionar item no acervo\n\n";
+	limparTela();
+
+	cout << "---------------------" << endl;
+	cout << "Menu de Acervo" << endl;
+	cout << "---------------------" << endl;
+	
+	cout << "\nOpcao 1: Adicionar item no acervo\n\n";
 	
 	Acervo acervo;
 	acervo.id = setId(listAcervos);
@@ -42,6 +49,10 @@ void adicionarItem(list<Acervo>& listAcervos){
 	acervo.locado = 0;
 	
 	listAcervos.push_back(acervo);
+	
+	limparTela();
+	
+	cout << "\Item " + acervo.titulo + " adicionado.\n\n";
 }
 
 void alterarItem(list<Acervo>& listAcervos){
@@ -61,8 +72,8 @@ void alterarItem(list<Acervo>& listAcervos){
 			
 			
 			while(run){
-				cout<<"\n\nMenu de altera��es de itens" << endl;
-				cout<<"0 - Finalizar altera��o e voltar"<< endl;
+				cout<<"\n\nMenu de alteracoes de itens" << endl;
+				cout<<"0 - Finalizar alteracao e voltar"<< endl;
 				cout<<"1 - Alterar titulo do Acervo"<< endl;
 				cout<<"2 - Alterar genero do Acervo"<< endl;
 				cout<<"3 - Alterar valor do Acervo"<< endl;
@@ -142,7 +153,9 @@ void menuAcervo(list<Acervo>& listAcervos){
 	int run = 1;
 	char opcao = 'x';
 	while(run){	    
-		cout << "\n\nMenu de Acervo" << endl;
+		cout << "---------------------" << endl;
+		cout << "Menu de Acervo" << endl;
+		cout << "---------------------" << endl;
 		cout << "0 - Voltar" << endl;
 		cout << "1 - Adicionar um novo item" << endl;
 		cout << "2 - Alterar dados de um item" << endl;

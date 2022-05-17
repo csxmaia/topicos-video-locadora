@@ -25,7 +25,13 @@ int setId(list<Cliente>& listCliente)
 }
 
 void adicionarCliente(list<Cliente>& listClientes){
-	cout << "\nAdicionar NOVO cliente\n\n";
+	limparTela();
+	
+	cout << "---------------------" << endl;
+	cout << "Menu de Clientes" << endl;
+	cout << "---------------------" << endl;
+	
+	cout << "\nOpcao 1: Adicionar NOVO cliente\n\n";
 	
 	Cliente cliente;
 	cliente.id = setId(listClientes);
@@ -51,6 +57,12 @@ void alterarCliente(list<Cliente>& listClientes){
 	
 	limparTela();
 	
+	cout << "---------------------" << endl;
+	cout << "Menu de Clientes" << endl;
+	cout << "---------------------" << endl;
+	
+	cout << "\nOpcao 2: Alterar dados do cliente\n";
+	
 	cout << "\nInforme o ID do cliente que deseja alterar: ";
 	cin >> id;
 	cout << endl;
@@ -60,14 +72,21 @@ void alterarCliente(list<Cliente>& listClientes){
 	if (!cliente == 0x0) {
 		for(it = listClientes.begin(); it != listClientes.end(); it++){
 			if(it -> id == id){
-				cout << "O cliente que voce esta alterando ?: ";
+				limparTela();
+				
+				cout << "\nVoce esta alterando os dados do cliente: ";
 				cout << it->nomeCliente;
 				
 				while(run){
-					cout<<"\n\nMenu de alteracoes de clientes" << endl;
-					cout<<"0 - Finalizar alteracao e voltar"<< endl;
+					
+					cout << "\n\n-------------------------------------" << endl;
+					cout << "Menu de Alteracao de Dados de Cliente" << endl;
+					cout << "-------------------------------------" << endl;
+
 					cout<<"1 - Alterar nome do Cliente"<< endl;
 					cout<<"2 - Alterar idade do Cliente"<< endl;
+					cout<<"3 - Finalizar alteracoes e voltar"<< endl;
+					
 					cin >> opcao;
 					
 					if (opcao == '1') {
@@ -75,11 +94,14 @@ void alterarCliente(list<Cliente>& listClientes){
 						cin.ignore();
 						getline(cin, it -> nomeCliente);
 						
+						limparTela();
 					} else if (opcao == '2') {
 						cout << "Informe a nova IDADE: ";
 						cin >> it -> idade;
 						
-					} else if (opcao == '0') {
+						limparTela();
+					} else if (opcao == '3') {
+						limparTela();
 						run = 0;
 					}
 				}
@@ -88,17 +110,31 @@ void alterarCliente(list<Cliente>& listClientes){
 			}
 		}
 	} else {
-		cout << "Cliente nao encontrado!\n";
+		limparTela();
+		
+		cout << "Cliente nao encontrado!\n\n";
 	}
 }
 
 void excluirCliente(list<Cliente>& listClientes){
 		
 	int id;
-	cout << "Informe o id do cliente que deseja remover" << endl;
+	
+	limparTela();
+	
+	cout << "---------------------" << endl;
+	cout << "Menu de Clientes" << endl;
+	cout << "---------------------" << endl;
+	
+	cout << "\nOpcao 3: Remover cliente\n";
+	
+	cout << "\nInforme o ID do cliente que deseja remover" << endl;
 	cin >> id;
 	
-	list<Cliente>::iterator it;
+	Cliente* cliente = buscarClientePorId(id, listClientes);
+	
+	if (!cliente == 0x0) {
+		list<Cliente>::iterator it;
 	for(it = listClientes.begin(); it != listClientes.end(); it++)
 	{
 		if(it->id == id) {
@@ -107,7 +143,14 @@ void excluirCliente(list<Cliente>& listClientes){
 		}
 	}
 	
-	cout << "Cliente removido com sucesso!";
+	limparTela();
+	
+	cout << "\nCliente removido com sucesso!\n";
+	} else {
+		limparTela();
+		
+		cout << "Cliente nao encontrado!\n\n";
+	}	
 }
 
 void listarClientes(list<Cliente>& listClientes){
@@ -115,13 +158,22 @@ void listarClientes(list<Cliente>& listClientes){
 	list<Cliente>::iterator it;
 	
 	if (!listClientes.empty()) {
+		limparTela();
+		
+		cout << "Listando os clientes cadastrados...\n";
+		
 		for(it = listClientes.begin(); it != listClientes.end(); it++) {
+		
+			
+			cout << "\n--------------------------\n";
 			cout << "id: " << it->id << "\n"
 	    	<< "nome: " << it->nomeCliente << "\n"
 	    	<< "idade: "<< it->idade
 	    	<< endl;
+	    	cout << "--------------------------\n";
 		}
 	} else {
+		limparTela();
 		cout << "\nNao existem clientes cadastrados!\n";
 	}
 }
@@ -164,6 +216,7 @@ void menuCliente(list<Cliente>& listClientes){
 		
 		switch(iopcao) {
 			case 0:
+				limparTela();
 				run = 0;
 				break;
 			case 1:
