@@ -7,12 +7,15 @@
 
 using namespace std;
 
-int setId(list<Cliente>& listCliente)
+extern list<Cliente> listClientes;
+
+int setIdCliente()
 {
-  if(listCliente.size() != 0) {
+
+  if(listClientes.size() != 0) {
 	  list<Cliente>::iterator it;
 	  int novoId = 1;
-	  for(it = listCliente.begin(); it != listCliente.end(); it++)
+	  for(it = listClientes.begin(); it != listClientes.end(); it++)
 	  {
 	    if(it->id >= novoId)
 		{
@@ -24,7 +27,7 @@ int setId(list<Cliente>& listCliente)
   return 1;
 }
 
-void adicionarCliente(list<Cliente>& listClientes){
+void adicionarCliente(){
 	limparTela();
 	
 	cout << "---------------------" << endl;
@@ -34,7 +37,7 @@ void adicionarCliente(list<Cliente>& listClientes){
 	cout << "\nOpcao 1: Adicionar NOVO cliente\n\n";
 	
 	Cliente cliente;
-	cliente.id = setId(listClientes);
+	cliente.id = setIdCliente();
 	cout << "Nome do Cliente: ";
 	cin.ignore();
 	getline(cin, cliente.nomeCliente);
@@ -49,7 +52,7 @@ void adicionarCliente(list<Cliente>& listClientes){
 	cout << "\nCliente " + cliente.nomeCliente + " adicionado.\n\n";
 }
 
-void alterarCliente(list<Cliente>& listClientes){
+void alterarCliente(){
 	int id;
 	char opcao;
 	bool run = 1;
@@ -67,7 +70,7 @@ void alterarCliente(list<Cliente>& listClientes){
 	cin >> id;
 	cout << endl;
 	
-	Cliente* cliente = buscarClientePorId(id, listClientes);
+	Cliente* cliente = buscarClientePorId(id);
 	
 	if (!cliente == 0x0) {
 		for(it = listClientes.begin(); it != listClientes.end(); it++){
@@ -116,7 +119,7 @@ void alterarCliente(list<Cliente>& listClientes){
 	}
 }
 
-void excluirCliente(list<Cliente>& listClientes){
+void excluirCliente(){
 		
 	int id;
 	
@@ -131,7 +134,7 @@ void excluirCliente(list<Cliente>& listClientes){
 	cout << "\nInforme o ID do cliente que deseja remover" << endl;
 	cin >> id;
 	
-	Cliente* cliente = buscarClientePorId(id, listClientes);
+	Cliente* cliente = buscarClientePorId(id);
 	
 	if (!cliente == 0x0) {
 		list<Cliente>::iterator it;
@@ -153,7 +156,7 @@ void excluirCliente(list<Cliente>& listClientes){
 	}	
 }
 
-void listarClientes(list<Cliente>& listClientes){
+void listarClientes(){
 	
 	list<Cliente>::iterator it;
 	
@@ -163,8 +166,6 @@ void listarClientes(list<Cliente>& listClientes){
 		cout << "Listando os clientes cadastrados...\n";
 		
 		for(it = listClientes.begin(); it != listClientes.end(); it++) {
-		
-			
 			cout << "\n--------------------------\n";
 			cout << "id: " << it->id << "\n"
 	    	<< "nome: " << it->nomeCliente << "\n"
@@ -178,7 +179,7 @@ void listarClientes(list<Cliente>& listClientes){
 	}
 }
 
-Cliente* buscarClientePorId(int& id, list<Cliente>& listClientes)
+Cliente* buscarClientePorId(int& id)
 {
 	Cliente *cliente = 0x0;
 	
@@ -198,7 +199,7 @@ Cliente* buscarClientePorId(int& id, list<Cliente>& listClientes)
 
 
 
-void menuCliente(list<Cliente>& listClientes){
+void menuCliente(){
 	int run = 1;
 	char opcao = 'x';
 	while(run){	    
@@ -220,16 +221,16 @@ void menuCliente(list<Cliente>& listClientes){
 				run = 0;
 				break;
 			case 1:
-				adicionarCliente(listClientes);
+				adicionarCliente();
 				break;
 			case 2:
-				alterarCliente(listClientes);
+				alterarCliente();
 				break;
 			case 3:
-				excluirCliente(listClientes);
+				excluirCliente();
 				break;
 			case 4:
-				listarClientes(listClientes);
+				listarClientes();
 				break;	
 			case 5:
 				limparTela();

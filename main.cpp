@@ -35,16 +35,16 @@ int main()
 				run = 0;
 			case 1:
 				limparTela();
-				menuCliente(listClientes);
+				menuCliente();
 				break;
 			case 2:
 				limparTela();
-				menuAcervo(listAcervos);
+				menuAcervo();
 				cout << "Acervo";
 				break;
 			case 3:
 				limparTela();
-				menuLocacao(listLocacoes, listClientes, listAcervos);
+				menuLocacao();
 				cout << "Locacao";
 				break;
 			default: 

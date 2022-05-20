@@ -10,9 +10,13 @@
 
 using namespace std;
 
+extern list<Cliente> listClientes;
+extern list<Acervo> listAcervos;
+extern list<Locacao> listLocacoes;
+
 double faturamento = 0;
 
-int setId(list<Locacao>& listLocacoes)
+int setIdLocacao()
 {
   if(listLocacoes.size() != 0) {
 	  list<Locacao>::iterator it;
@@ -29,7 +33,7 @@ int setId(list<Locacao>& listLocacoes)
   return 1;
 }
 
-void adicionarLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<Acervo>& listAcervos){
+void adicionarLocacao(){
 	cout << "Adicionar nova LOCACAO\n\n";
 	// Realizar operação de cadastrar locar mais de um item
 	// Validar se o item já não está como locado
@@ -38,12 +42,12 @@ void adicionarLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, 
 	int acervoId;
 	
 	Locacao locacao;
-	locacao.id = setId(listLocacoes);
+	locacao.id = setIdLocacao();
 
 	cout << "ID do cliente: ";
 	cin >> clienteId;
 	
-	locacao.cliente = buscarClientePorId(clienteId, listClientes);
+	locacao.cliente = buscarClientePorId(clienteId);
 	
 	//while - pede cliente, enquantro nao eoncntra, pede o cliente
 	//altera variavel de controle do whileai para o whiel
@@ -55,7 +59,7 @@ void adicionarLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, 
         cin >> acervoId;
 
         Acervo *item;
-        item = buscarItemPorId(acervoId, listAcervos);
+        item = buscarItemPorId(acervoId);
         cout << "Item " + item->titulo + " selecionado.\n";
 
         item->locado = 1;
@@ -76,7 +80,7 @@ void excluirLocacao(){
 	cout << "excluirCliente\n\n";
 }
 
-void visualizarItensNaoLocados(list<Acervo>& listAcervos)
+void visualizarItensNaoLocados()
 {
 	list<Acervo>::iterator it;
 	cout << "Itens nao locados: \n";
@@ -89,7 +93,7 @@ void visualizarItensNaoLocados(list<Acervo>& listAcervos)
 	}
 }
 
-void visualizarItensLocados(list<Locacao>& listLocacoes)
+void visualizarItensLocados()
 {
 	list<Locacao>::iterator it;
 	for (it = listLocacoes.begin(); it != listLocacoes.end(); it++)
@@ -98,7 +102,7 @@ void visualizarItensLocados(list<Locacao>& listLocacoes)
 		<< "\nCliente: " << it->cliente->nomeCliente << endl;
 }
 
-void realizarDevolucao(list<Locacao>& listLocacoes)
+void realizarDevolucao()
 {
 	int locacaoId;
 
@@ -124,7 +128,7 @@ void mostrarFaturamento(){
 	cout << "\n" << "Faturamento da locadora: R$" << faturamento << "\n";
 }
 
-void menuLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<Acervo>& listAcervos){
+void menuLocacao(){
 	int run = 1;
 	char opcao = 'x';
 	while(run){	    
@@ -144,16 +148,16 @@ void menuLocacao(list<Locacao>& listLocacoes, list<Cliente>& listClientes, list<
 				run = 0;
 				break;
 			case 1:
-				adicionarLocacao(listLocacoes, listClientes, listAcervos);
+				adicionarLocacao();
 				break;
 			case 2:
-			    visualizarItensLocados(listLocacoes);
+			    visualizarItensLocados();
 				break;
 			case 3:
-				visualizarItensNaoLocados(listAcervos);
+				visualizarItensNaoLocados();
 				break;
 			case 4:
-				realizarDevolucao(listLocacoes);
+				realizarDevolucao();
 				break;	
 			case 5:
 				mostrarFaturamento();

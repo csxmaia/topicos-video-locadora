@@ -7,10 +7,13 @@
 
 using namespace std;
 
-int setId(list<Acervo>& listAcervos)
+extern list<Acervo> listAcervos;
+
+int setIdAcervo()
 {
+  list<Acervo>::iterator it;	
   if(listAcervos.size() != 0) {
-	  list<Acervo>::iterator it;
+	  
 	  int novoId = 1;
 	  for(it = listAcervos.begin(); it != listAcervos.end(); it++)
 	  {
@@ -24,7 +27,7 @@ int setId(list<Acervo>& listAcervos)
   return 1;
 }
 
-void adicionarItem(list<Acervo>& listAcervos){
+void adicionarItem(){
 	limparTela();
 
 	cout << "---------------------" << endl;
@@ -34,7 +37,7 @@ void adicionarItem(list<Acervo>& listAcervos){
 	cout << "\nOpcao 1: Adicionar item no acervo\n\n";
 	
 	Acervo acervo;
-	acervo.id = setId(listAcervos);
+	acervo.id = setIdAcervo();
 
 	cout << "Titulo: ";
 	cin.ignore();
@@ -52,31 +55,45 @@ void adicionarItem(list<Acervo>& listAcervos){
 	
 	limparTela();
 	
-	cout << "\Item " + acervo.titulo + " adicionado.\n\n";
+	cout << "Item " + acervo.titulo + " adicionado.\n\n";
 }
 
-void alterarItem(list<Acervo>& listAcervos){
+void alterarItem(){
 	int id;
 	char opcao;
 	bool run = 1;
 	list<Acervo>::iterator it;
-	
-	cout << "Informe o ID do item que deseja alterar: ";
+
+	limparTela();
+
+	cout << "---------------------" << endl;
+	cout << "Menu de Acervo" << endl;
+	cout << "---------------------" << endl;
+
+	cout << "\nOpcao 2: Alterar dados do Acervo\n";
+
+	cout << "\nInforme o ID do item que deseja alterar: ";
 	cin >> id;
 	cout << endl;
 	
 	for(it = listAcervos.begin(); it != listAcervos.end(); it++){
 		if(it -> id == id){
-			cout << "O item que voce est� alterando �: ";
+			limparTela();
+
+			cout << "\nVoce esta alterando os dados do acervo: ";
 			cout << it-> titulo;
 			
-			
 			while(run){
-				cout<<"\n\nMenu de alteracoes de itens" << endl;
-				cout<<"0 - Finalizar alteracao e voltar"<< endl;
-				cout<<"1 - Alterar titulo do Acervo"<< endl;
-				cout<<"2 - Alterar genero do Acervo"<< endl;
-				cout<<"3 - Alterar valor do Acervo"<< endl;
+
+				cout << "\n\n-------------------------------------" << endl;
+				cout << "Menu de Alteracao de Dados do ACERVO" << endl;
+				cout << "-------------------------------------" << endl;
+
+				cout << "0 - Finalizar alteracao e voltar" << endl;
+				cout << "1 - Alterar titulo do Acervo" << endl;
+				cout << "2 - Alterar genero do Acervo" << endl;
+				cout << "3 - Alterar valor do Acervo" << endl;
+
 				cin >> opcao;
 				
 				if (opcao == '1') {
@@ -102,7 +119,7 @@ void alterarItem(list<Acervo>& listAcervos){
 	}
 }
 
-void excluirItem(list<Acervo>& listAcervos){
+void excluirItem(){
 	int id;
 	cout << "Informe o id do item que deseja remover" << endl;
 	cin >> id;
@@ -119,7 +136,7 @@ void excluirItem(list<Acervo>& listAcervos){
 	cout << "Item removido com sucesso!";
 }
 
-void listarItens(list<Acervo>& listAcervos){
+void listarItens(){
 	list<Acervo>::iterator it;
 	for(it = listAcervos.begin(); it != listAcervos.end(); it++)
 	{
@@ -133,7 +150,7 @@ void listarItens(list<Acervo>& listAcervos){
 
 }
 
-Acervo* buscarItemPorId(int& id, list<Acervo>& listAcervos)
+Acervo* buscarItemPorId(int& id)
 {
 	Acervo *item;
 	list<Acervo>::iterator it;
@@ -149,7 +166,7 @@ Acervo* buscarItemPorId(int& id, list<Acervo>& listAcervos)
 	return item;
 }
 
-void menuAcervo(list<Acervo>& listAcervos){
+void menuAcervo(){
 	int run = 1;
 	char opcao = 'x';
 	while(run){	    
@@ -170,16 +187,16 @@ void menuAcervo(list<Acervo>& listAcervos){
 				run = 0;
 				break;
 			case 1:
-				adicionarItem(listAcervos);
+				adicionarItem();
 				break;
 			case 2:
-				alterarItem(listAcervos);
+				alterarItem();
 				break;
 			case 3:
-				excluirItem(listAcervos);
+				excluirItem();
 				break;
 			case 4:
-				listarItens(listAcervos);
+				listarItens();
 				break;	
 			default: 
 				cout << "Opcao inexistente";
